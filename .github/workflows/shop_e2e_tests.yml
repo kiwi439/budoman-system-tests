@@ -74,6 +74,26 @@ jobs:
           repository: kiwi439/budoman-backend
           path: budoman-backend
           ref: ${{ inputs.budoman-backend_branch }}
+      # - name: Create .env file for backend application
+      #   working-directory: budoman-backend
+      #   run: |
+      #     cat <<EOF > .env
+      #     AWS_REGION=${{ secrets.BUDOMAN_BACKEND_AWS_REGION }}
+      #     AWS_ACCESS_KEY_ID=${{ secrets.BUDOMAN_BACKEND_AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY=${{ secrets.BUDOMAN_BACKEND_AWS_SECRET_ACCESS_KEY }}
+      #     SMTP_PASSWORD=${{ secrets.BUDOMAN_BACKEND_SMTP_PASSWORD }}
+      #     SMTP_AUTHENTICATION=${{ secrets.BUDOMAN_BACKEND_SMTP_AUTHENTICATION }}
+      #     DATABASE_HOST=${{ secrets.BUDOMAN_BACKEND_DATABASE_HOST }}
+      #     DATABASE_USER_NAME=${{ secrets.BUDOMAN_BACKEND_DATABASE_USER_NAME }}
+      #     DATABASE_PASSWORD=${{ secrets.BUDOMAN_BACKEND_DATABASE_PASSWORD }}
+      #     DATABASE_PORT=${{ secrets.BUDOMAN_BACKEND_DATABASE_PORT }}
+      #     REDIS_URL=${{ secrets.BUDOMAN_BACKEND_REDIS_URL }}
+      #     SCHEMA_REGISTRY_URL=${{ secrets.BUDOMAN_BACKEND_SCHEMA_REGISTRY_URL }}
+      #     SIDEKIQ_PANEL_LOGIN=${{ secrets.BUDOMAN_BACKEND_SIDEKIQ_PANEL_LOGIN }}
+      #     SIDEKIQ_PANEL_PASSWORD=${{ secrets.BUDOMAN_BACKEND_SIDEKIQ_PANEL_PASSWORD }}
+      #     ROLLBAR_ACCESS_TOKEN=${{ secrets.BUDOMAN_BACKEND_ROLLBAR_ACCESS_TOKEN }}
+      #     RAILS_ENV=test
+      #     EOF
       - name: Create .env file for backend application
         working-directory: budoman-backend
         run: |
@@ -83,10 +103,10 @@ jobs:
           AWS_SECRET_ACCESS_KEY=${{ secrets.BUDOMAN_BACKEND_AWS_SECRET_ACCESS_KEY }}
           SMTP_PASSWORD=${{ secrets.BUDOMAN_BACKEND_SMTP_PASSWORD }}
           SMTP_AUTHENTICATION=${{ secrets.BUDOMAN_BACKEND_SMTP_AUTHENTICATION }}
-          DATABASE_HOST=${{ secrets.BUDOMAN_BACKEND_DATABASE_HOST }}
-          DATABASE_USER_NAME=${{ secrets.BUDOMAN_BACKEND_DATABASE_USER_NAME }}
-          DATABASE_PASSWORD=${{ secrets.BUDOMAN_BACKEND_DATABASE_PASSWORD }}
-          DATABASE_PORT=${{ secrets.BUDOMAN_BACKEND_DATABASE_PORT }}
+          DATABASE_HOST=postgres
+          DATABASE_USER_NAME=postgres
+          DATABASE_PASSWORD=postgres
+          DATABASE_PORT=5432
           REDIS_URL=${{ secrets.BUDOMAN_BACKEND_REDIS_URL }}
           SCHEMA_REGISTRY_URL=${{ secrets.BUDOMAN_BACKEND_SCHEMA_REGISTRY_URL }}
           SIDEKIQ_PANEL_LOGIN=${{ secrets.BUDOMAN_BACKEND_SIDEKIQ_PANEL_LOGIN }}
