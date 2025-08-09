@@ -54,7 +54,8 @@ jobs:
         with:
           repository: kiwi439/budoman-front
           path: budoman-frontend
-          ref: ${{ inputs.budoman-frontend_branch }}
+          # ref: ${{ inputs.budoman-frontend_branch }}
+          ref: feature/e2e-tests
       - name: Create .env file for frontend application
         working-directory: budoman-frontend
         run: |
