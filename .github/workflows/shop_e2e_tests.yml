@@ -27,8 +27,6 @@ on:
         required: true
       BUDOMAN_BACKEND_SIDEKIQ_PANEL_PASSWORD:
         required: true
-      BUDOMAN_BACKEND_ROLLBAR_ACCESS_TOKEN:
-        required: true
 jobs:
   run-e2e-tests:
     runs-on: ubuntu-latest
@@ -63,7 +61,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY=${{ secrets.BUDOMAN_BACKEND_AWS_SECRET_ACCESS_KEY }}
           SIDEKIQ_PANEL_LOGIN=${{ secrets.BUDOMAN_BACKEND_SIDEKIQ_PANEL_LOGIN }}
           SIDEKIQ_PANEL_PASSWORD=${{ secrets.BUDOMAN_BACKEND_SIDEKIQ_PANEL_PASSWORD }}
-          ROLLBAR_ACCESS_TOKEN=${{ secrets.BUDOMAN_BACKEND_ROLLBAR_ACCESS_TOKEN }}
           RAILS_ENV=test
           EOF
       - name: Upload system tests repository
@@ -89,4 +86,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cypress-screenshots
-          path: budoman-frontend/tests/e2e/screenshots
+          path: budoman-system-tests/tests/e2e/shop/screenshots
