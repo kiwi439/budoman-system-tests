@@ -126,7 +126,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           start: |
-            docker compose --project-directory ../budoman-frontend -f ../budoman-frontend/docker-compose.yml up -d
+            docker compose --project-directory ../budoman-frontend --env-file ../budoman-frontend/.env -f ../budoman-frontend/docker-compose.yml up -d
             docker compose --project-directory ../budoman-backend --env-file ../budoman-backend/.env -f ../budoman-backend/docker-compose.yml up -d
           wait-on: 'http://localhost:3003/, http://localhost:3333/'
           wait-on-timeout: 120
