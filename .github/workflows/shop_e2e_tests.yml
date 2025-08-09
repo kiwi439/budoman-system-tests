@@ -19,8 +19,6 @@ on:
         required: true
       BUDOMAN_FRONTEND_AWS_BUCKET:
         required: true
-      BUDOMAN_BACKEND_AWS_REGION:
-        required: true
       BUDOMAN_BACKEND_AWS_ACCESS_KEY_ID:
         required: true
       BUDOMAN_BACKEND_AWS_SECRET_ACCESS_KEY:
@@ -76,7 +74,6 @@ jobs:
         working-directory: budoman-backend
         run: |
           cat <<EOF > .env
-          AWS_REGION=${{ secrets.BUDOMAN_BACKEND_AWS_REGION }}
           AWS_ACCESS_KEY_ID=${{ secrets.BUDOMAN_BACKEND_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY=${{ secrets.BUDOMAN_BACKEND_AWS_SECRET_ACCESS_KEY }}
           SMTP_PASSWORD=${{ secrets.BUDOMAN_BACKEND_SMTP_PASSWORD }}
