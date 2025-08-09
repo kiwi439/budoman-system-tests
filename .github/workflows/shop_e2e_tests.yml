@@ -13,8 +13,6 @@ on:
     secrets:
       BUDOMAN_FRONTEND_API_URL:
         required: true
-      BUDOMAN_FRONTEND_AWS_REGION:
-        required: true
       BUDOMAN_FRONTEND_AWS_ACCESS_KEY_ID:
         required: true
       BUDOMAN_FRONTEND_AWS_SECRET_ACCESS_KEY:
@@ -64,7 +62,6 @@ jobs:
         run: |
           cat <<EOF > .env
           API_URL=${{ secrets.BUDOMAN_FRONTEND_API_URL }}
-          AWS_REGION=${{ secrets.BUDOMAN_FRONTEND_AWS_REGION }}
           AWS_ACCESS_KEY_ID=${{ secrets.BUDOMAN_FRONTEND_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY=${{ secrets.BUDOMAN_FRONTEND_AWS_SECRET_ACCESS_KEY }}
           AWS_BUCKET=${{ secrets.BUDOMAN_FRONTEND_AWS_BUCKET }}
@@ -102,18 +99,6 @@ jobs:
           path: budoman-system-tests
       - name: Install dependencies for system test repository
         run: cd budoman-system-tests && npm install
-      # - name: Start budoman-backend
-      #   run: docker compose up -d
-      #   working-directory: budoman-backend
-      # - name: Start budoman-frontend
-      #   run: docker compose up -d
-      #   working-directory: budoman-frontend
-      # - name: Run Cypress tests
-      #   id: cypress-tests
-      #   working-directory: budoman-system-tests
-      #   run: |
-      #     npx wait-on http://localhost:3003/ http://localhost:3333/ --timeout 120000
-      #     npm run tests:shop:e2e
       - name: Run Cypress tests
         id: cypress-tests
         uses: cypress-io/github-action@v6
@@ -125,8 +110,7 @@ jobs:
           wait-on-timeout: 120
           command: npm run tests:shop:e2e
           working-directory: budoman-system-tests
-          # install: false
-      - name: Upload Cypress screenshots
+      - name: Upload Cypress screenshots # TODO: path is wrong surely - just update
         if: failure() && steps.cypress-tests.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
