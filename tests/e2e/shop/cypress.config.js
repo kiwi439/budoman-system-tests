@@ -11,5 +11,9 @@ module.exports = defineConfig({
     screenshotsFolder: `${ROOT_PATH}/screenshots`,
     baseUrl: `${HOST}:3003`,
     apiUrl: `${HOST}:3333`,
+    env: {
+      sidekiqPanelLogin: process.env.SIDEKIQ_PANEL_LOGIN,
+      sidekiqPanelPassword: process.env.SIDEKIQ_PANEL_PASSWORD
+    }
   }
 });

@@ -73,6 +73,9 @@ jobs:
       - name: Run Cypress tests
         id: cypress-tests
         uses: cypress-io/github-action@v6
+        env:
+          SIDEKIQ_PANEL_LOGIN: ${{ secrets.BUDOMAN_BACKEND_SIDEKIQ_PANEL_LOGIN }}
+          SIDEKIQ_PANEL_PASSWORD: ${{ secrets.BUDOMAN_BACKEND_SIDEKIQ_PANEL_PASSWORD }}
         with:
           start: |
             docker compose -f ../budoman-frontend/docker-compose.yml up -d
