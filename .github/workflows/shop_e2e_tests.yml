@@ -55,7 +55,7 @@ jobs:
           repository: kiwi439/budoman-front
           path: budoman-frontend
           # ref: ${{ inputs.budoman-frontend_branch }}
-          ref: feature/e2e-tests
+          ref: feature/remove-unused-env-vars
       - name: Create .env file for frontend application
         working-directory: budoman-frontend
         run: |
