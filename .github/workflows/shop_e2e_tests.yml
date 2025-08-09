@@ -126,8 +126,8 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           start: |
-            docker compose -f ../budoman-frontend/docker-compose.yml up -d
-            docker compose -f ../budoman-backend/docker-compose.yml up -d
+            docker compose --project-directory ../budoman-frontend -f ../budoman-frontend/docker-compose.yml up -d
+            docker compose --project-directory ../budoman-backend -f ../budoman-backend/docker-compose.yml up -d
           wait-on: 'http://localhost:3003/, http://localhost:3333/'
           wait-on-timeout: 120
           command: npm run tests:shop:e2e
