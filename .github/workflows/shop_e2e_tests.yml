@@ -102,10 +102,18 @@ jobs:
       - name: Install dependencies for system test repository
         run: cd budoman-system-tests && npm install
       - name: Start budoman-backend
-        run: docker compose up -d
+        # run: docker compose up -d
+        run: |
+          pwd
+          ls -la
+          cat docker-compose.yml
         working-directory: budoman-backend
       - name: Start budoman-frontend
-        run: docker compose up -d
+        # run: docker compose up -d
+        run: |
+          pwd
+          ls -la
+          cat docker-compose.yml
         working-directory: budoman-frontend
       - name: Run Cypress tests
         id: cypress-tests
