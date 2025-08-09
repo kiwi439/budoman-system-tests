@@ -33,8 +33,6 @@ on:
         required: true
       BUDOMAN_BACKEND_DATABASE_PORT:
         required: true
-      BUDOMAN_BACKEND_REDIS_URL:
-        required: true
       BUDOMAN_BACKEND_SCHEMA_REGISTRY_URL:
         required: true
       BUDOMAN_BACKEND_SIDEKIQ_PANEL_LOGIN:
@@ -80,7 +78,6 @@ jobs:
           DATABASE_USER_NAME=postgres
           DATABASE_PASSWORD=postgres
           DATABASE_PORT=5432
-          REDIS_URL=${{ secrets.BUDOMAN_BACKEND_REDIS_URL }}
           SCHEMA_REGISTRY_URL=${{ secrets.BUDOMAN_BACKEND_SCHEMA_REGISTRY_URL }}
           SIDEKIQ_PANEL_LOGIN=${{ secrets.BUDOMAN_BACKEND_SIDEKIQ_PANEL_LOGIN }}
           SIDEKIQ_PANEL_PASSWORD=${{ secrets.BUDOMAN_BACKEND_SIDEKIQ_PANEL_PASSWORD }}
